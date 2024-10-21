@@ -3,7 +3,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Volume2, VolumeX } from 'lucide-react';
-import Poster from '../poster/Poster';
 
 const GLTFModelViewer = () => {
   const mountRef = useRef(null);
@@ -218,8 +217,32 @@ const GLTFModelViewer = () => {
     };
   }, []);
 
+  
+
   return (
     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+      {/* Text Overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '20%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 10,
+          fontFamily: 'Teko, sans-serif',
+          fontSize: '8rem',
+          color: 'white',
+          textTransform: 'uppercase',
+          textAlign: 'center',
+          animation: 'float 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate, pulse 2s ease-in-out infinite',
+          textShadow: '0 0 20px #E9FF00',
+          pointerEvents: 'none',
+          letterSpacing: '4px',
+        }}
+      >
+        ROLLING SOON...
+      </div>
+
       {/* Audio control button */}
       <button
         onClick={toggleMute}
@@ -253,6 +276,7 @@ const GLTFModelViewer = () => {
 
       {/* Main canvas container */}
       <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
+
       {/* Loading and error states */}
       {(!modelLoaded || !audioLoaded) && !error && (
         <div style={{
@@ -268,7 +292,6 @@ const GLTFModelViewer = () => {
           Loading... {!modelLoaded && 'Model'} {!audioLoaded && 'Audio'}
         </div>
       )}
-
       {error && (
         <div style={{
           position: 'absolute',
@@ -283,8 +306,51 @@ const GLTFModelViewer = () => {
           Error: {error}
         </div>
       )}
+
+      {/* Add the CSS for the animations */}
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css?family=Teko:700&display=swap');
+          
+          @keyframes float {
+            0% {
+              transform: translate(-50%, -50%);
+            }
+            50% {
+              transform: translate(-50%, -60%);
+            }
+            100% {
+              transform: translate(-50%, -50%);
+            }
+          }
+
+          @keyframes textGlow {
+            0% {
+              text-shadow: 0 0 20px #E9FF00;
+            }
+            50% {
+              text-shadow: 0 0 40px #E9FF00, 0 0 80px #E9FF00;
+            }
+            100% {
+              text-shadow: 0 0 20px #E9FF00;
+            }
+          }
+
+          @keyframes pulse {
+            0% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.8;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+        `}
+      </style>
     </div>
-  );
+);
 };
 
 export default GLTFModelViewer;
