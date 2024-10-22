@@ -329,13 +329,13 @@ const GLTFModelViewer = () => {
 
           @keyframes textGlow {
             0% {
-              text-shadow: 0 0 20px #E9FF00;
+              text-shadow: 0 0 10px #5966e2;
             }
             50% {
-              text-shadow: 0 0 40px #E9FF00, 0 0 80px #E9FF00;
+              text-shadow: 0 0 20px #5966e2, 0 0 20px #5966e2;
             }
             100% {
-              text-shadow: 0 0 20px #E9FF00;
+              text-shadow: 0 0 10px #5966e2;
             }
           }
 
