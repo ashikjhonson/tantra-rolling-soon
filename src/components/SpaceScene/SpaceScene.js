@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Volume2, VolumeX } from 'lucide-react';
+import React, { useRef, useEffect, useState } from "react";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Volume2, VolumeX } from "lucide-react";
 
 const GLTFModelViewer = () => {
   const mountRef = useRef(null);
@@ -17,19 +17,19 @@ const GLTFModelViewer = () => {
   const initializeAudio = () => {
     try {
       const audio = new Audio();
-      audio.src = 'song.mp3'; // Update this path to your MP3 file location
-      audio.type = 'audio/mp3';
+      audio.src = "song.mp3"; // Update this path to your MP3 file location
+      audio.type = "audio/mp3";
       audio.loop = true;
-      
+
       // Add event listeners for better audio state management
-      audio.addEventListener('canplaythrough', () => {
+      audio.addEventListener("canplaythrough", () => {
         setAudioLoaded(true);
-        console.log('Audio loaded and ready to play');
+        console.log("Audio loaded and ready to play");
       });
 
-      audio.addEventListener('playing', () => {
+      audio.addEventListener("playing", () => {
         setIsPlaying(true);
-        console.log('Audio started playing');
+        console.log("Audio started playing");
       });
 
       // Set volume to a comfortable level
@@ -37,7 +37,7 @@ const GLTFModelViewer = () => {
 
       audioRef.current = audio;
     } catch (error) {
-      console.error('Audio initialization error:', error);
+      console.error("Audio initialization error:", error);
     }
   };
 
@@ -45,8 +45,8 @@ const GLTFModelViewer = () => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
         // Try to play if paused
-        audioRef.current.play().catch(error => {
-          console.warn('Audio play failed:', error);
+        audioRef.current.play().catch((error) => {
+          console.warn("Audio play failed:", error);
         });
       }
       audioRef.current.muted = !audioRef.current.muted;
@@ -60,7 +60,7 @@ const GLTFModelViewer = () => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
-        audioRef.current.src = 'song.pm3';
+        audioRef.current.src = "song.pm3";
       }
     };
   }, []);
@@ -69,20 +69,20 @@ const GLTFModelViewer = () => {
   useEffect(() => {
     const handleUserInteraction = () => {
       if (audioRef.current && audioLoaded && !isPlaying) {
-        audioRef.current.play().catch(error => {
-          console.warn('Audio play failed on interaction:', error);
+        audioRef.current.play().catch((error) => {
+          console.warn("Audio play failed on interaction:", error);
         });
       }
     };
 
     // Add multiple event listeners for better interaction handling
-    const events = ['click', 'touchstart', 'keydown'];
-    events.forEach(event => {
+    const events = ["click", "touchstart", "keydown"];
+    events.forEach((event) => {
       window.addEventListener(event, handleUserInteraction, { once: true });
     });
 
     return () => {
-      events.forEach(event => {
+      events.forEach((event) => {
         window.removeEventListener(event, handleUserInteraction);
       });
     };
@@ -135,7 +135,7 @@ const GLTFModelViewer = () => {
     // GLTF Loader
     const loader = new GLTFLoader();
     loader.load(
-      '/space_boi/scene.gltf',
+      "/space_boi/scene.gltf",
       (gltf) => {
         modelRef.current = gltf.scene;
         scene.add(gltf.scene);
@@ -144,37 +144,37 @@ const GLTFModelViewer = () => {
         const box = new THREE.Box3().setFromObject(gltf.scene);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
-        
+
         const maxDim = Math.max(size.x, size.y, size.z);
         const fov = camera.fov * (Math.PI / 180);
         let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-        
+
         camera.position.z = cameraZ * 2;
         camera.position.y = cameraZ;
         camera.updateProjectionMatrix();
-        
+
         controls.target.copy(center);
         controls.update();
 
         setModelLoaded(true);
       },
       (xhr) => {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       },
       (error) => {
-        console.error('Model loading error:', error);
-        setError('Failed to load 3D model');
+        console.error("Model loading error:", error);
+        setError("Failed to load 3D model");
       }
     );
 
     // Animation loop
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      
+
       if (modelRef.current) {
         modelRef.current.rotation.y += 0.006;
       }
-      
+
       controls.update();
       renderer.render(scene, camera);
     };
@@ -187,14 +187,14 @@ const GLTFModelViewer = () => {
       camera.updateProjectionMatrix();
       renderer.setSize(clientWidth, clientHeight);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {
-      console.log('Cleaning up Three.js resources');
-      window.removeEventListener('resize', handleResize);
+      console.log("Cleaning up Three.js resources");
+      window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
-      
+
       scene.traverse((object) => {
         if (object.geometry) {
           object.geometry.dispose();
@@ -211,61 +211,60 @@ const GLTFModelViewer = () => {
           }
         }
       });
-      
+
       renderer.dispose();
       currentRef.removeChild(renderer.domElement);
     };
   }, []);
 
-  
-
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+    <div style={{ position: "relative", width: "100%", height: "100vh" }}>
       {/* Text Overlay */}
       <div
         style={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          position: "absolute",
+          bottom: "0%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           zIndex: 10,
-          fontFamily: 'Teko, sans-serif',
-          fontSize: '8rem',
-          color: 'white',
-          textTransform: 'uppercase',
-          textAlign: 'center',
-          animation: 'float 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate, pulse 2s ease-in-out infinite',
-          textShadow: '0 0 20px #E9FF00',
-          pointerEvents: 'none',
-          letterSpacing: '4px',
+          fontFamily: "Pixelify Sans, sans-serif",
+          textAlign: "center",
+          animation: "float 3s, textGlow 2s ease-in-out infinite alternate",
+          textShadow: "0 0 20px #FFFFFF", // Modify here by using a different approach for important
+          letterSpacing: "6px",
         }}
+        className="txt "
       >
-        ROLLING SOON...
+        ROLLING SOON
       </div>
 
       {/* Audio control button */}
       <button
         onClick={toggleMute}
         style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
+          position: "absolute",
+          top: "20px",
+          left: "20px",
           zIndex: 1000,
-          padding: '10px',
-          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          border: 'none',
-          borderRadius: '50%',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '40px',
-          height: '40px',
-          transition: 'background-color 0.3s ease'
+          padding: "10px",
+          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          border: "none",
+          borderRadius: "50%",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "40px",
+          height: "40px",
+          transition: "background-color 0.3s ease",
         }}
-        aria-label={isMuted ? 'Unmute' : 'Mute'}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'}
-        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
+        aria-label={isMuted ? "Unmute" : "Mute"}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.3)")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.2)")
+        }
       >
         {isMuted ? (
           <VolumeX size={24} color="white" />
@@ -275,34 +274,38 @@ const GLTFModelViewer = () => {
       </button>
 
       {/* Main canvas container */}
-      <div ref={mountRef} style={{ width: '100%', height: '100%' }} />
+      <div ref={mountRef} style={{ width: "100%", height: "100%" }} />
 
       {/* Loading and error states */}
       {(!modelLoaded || !audioLoaded) && !error && (
-        <div style={{
-          position: 'absolute',
-          bottom: '20px',
-          left: '20px',
-          color: 'white',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          fontSize: '14px'
-        }}>
-          Loading... {!modelLoaded && 'Model'} {!audioLoaded && 'Audio'}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: "20px",
+            color: "white",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: "8px 16px",
+            borderRadius: "4px",
+            fontSize: "14px",
+          }}
+        >
+          Loading... {!modelLoaded && "Model"} {!audioLoaded && "Audio"}
         </div>
       )}
       {error && (
-        <div style={{
-          position: 'absolute',
-          bottom: '20px',
-          left: '20px',
-          color: 'white',
-          backgroundColor: 'rgba(255, 0, 0, 0.5)',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          fontSize: '14px'
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            left: "20px",
+            color: "white",
+            backgroundColor: "rgba(255, 0, 0, 0.5)",
+            padding: "8px 16px",
+            borderRadius: "4px",
+            fontSize: "14px",
+          }}
+        >
           Error: {error}
         </div>
       )}
@@ -350,7 +353,7 @@ const GLTFModelViewer = () => {
         `}
       </style>
     </div>
-);
+  );
 };
 
 export default GLTFModelViewer;

@@ -1,10 +1,44 @@
 .App {
   text-align: center;
 }
+.txt {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  color: white;
+  font-weight: 700;
+  font-size: 5rem;
+  font-style: normal;
+}
 
+@media screen and (max-width: 500px) {
+  .txt {
+    font-size: 4rem;
+  }
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+  }
+  100% {
+    text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
