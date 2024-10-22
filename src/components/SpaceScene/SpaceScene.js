@@ -219,6 +219,23 @@ const GLTFModelViewer = () => {
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "15%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 10,
+          fontFamily: "Pixelify Sans, sans-serif",
+          textAlign: "top",
+          animation: "float 3s, textGlow 2s ease-in-out infinite alternate",
+          textShadow: "0 0 20px #FFFFFF", // Modify here by using a different approach for important
+          letterSpacing: "6px",
+        }}
+        className="txt "
+      >
+        08/11/24
+      </div>
       {/* Text Overlay */}
       <div
         style={{

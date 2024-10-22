@@ -9,10 +9,21 @@
   font-size: 5rem;
   font-style: normal;
 }
+/* .dt {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  color: white;
+  font-weight: 700;
+  font-size: 5rem;
+  font-style: normal;
+} */
 
 @media screen and (max-width: 500px) {
   .txt {
     font-size: 4rem;
+  }
+  .dt{
+  bottom: -10%;
   }
 }
 .App-logo {
