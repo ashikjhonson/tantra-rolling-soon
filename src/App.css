@@ -5,25 +5,41 @@
   font-family: "Pixelify Sans", sans-serif;
   font-optical-sizing: auto;
   color: white;
+  bottom: 0%;
   font-weight: 700;
   font-size: 4rem;
   font-style: normal;
 }
-/* .dt {
+.dt {
   font-family: "Pixelify Sans", sans-serif;
   font-optical-sizing: auto;
   color: white;
   font-weight: 700;
   font-size: 5rem;
   font-style: normal;
-} */
+}
+.logoimg {
+  padding-top: 300px;
+  width: 100px;
+  height: 100px;
+}
 
 @media screen and (max-width: 500px) {
   .txt {
-    font-size: 4rem;
+    font-size: 2rem;
+    bottom: 15%;
+    /* border: 1px solid white; */
+    width: 100%;
   }
-  .dt{
-  bottom: -10%;
+  .dt {
+    font-size: 1.5rem;
+    /* background-color: white; */
+    bottom: 10%;
+  }
+  .logoimg {
+    padding-top: 200px;
+    width: 100px;
+    height: 100px;
   }
 }
 .App-logo {
