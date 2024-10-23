@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tantra-rolling-soon/static/css/main.91aecb1c.css",
+    "main.js": "/tantra-rolling-soon/static/js/main.818b1432.js",
+    "static/js/453.767c2e45.chunk.js": "/tantra-rolling-soon/static/js/453.767c2e45.chunk.js",
+    "static/media/logo.png": "/tantra-rolling-soon/static/media/logo.50d07f680fdc79bd39d0.png",
+    "index.html": "/tantra-rolling-soon/index.html",
+    "main.91aecb1c.css.map": "/tantra-rolling-soon/static/css/main.91aecb1c.css.map",
+    "main.818b1432.js.map": "/tantra-rolling-soon/static/js/main.818b1432.js.map",
+    "453.767c2e45.chunk.js.map": "/tantra-rolling-soon/static/js/453.767c2e45.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91aecb1c.css",
+    "static/js/main.818b1432.js"
+  ]
+}
