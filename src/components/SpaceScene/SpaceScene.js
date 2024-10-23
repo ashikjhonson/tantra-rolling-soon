@@ -77,7 +77,7 @@ const GLTFModelViewer = () => {
     };
 
     // Add multiple event listeners for better interaction handling
-    const events = ["click", "touchstart", "keydown"];
+    const events = ["click", "touchstart", "keydown", "resize", "load"];
     events.forEach((event) => {
       window.addEventListener(event, handleUserInteraction, { once: true });
     });
@@ -182,13 +182,13 @@ const GLTFModelViewer = () => {
     animate();
 
     // Handle window resize
-    // const handleResize = () => {
-    const { clientWidth, clientHeight } = currentRef;
-    camera.aspect = clientWidth / clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(clientWidth, clientHeight);
-    // };
-    // window.addEventListener("resize", handleResize);
+    const handleResize = () => {
+      const { clientWidth, clientHeight } = currentRef;
+      camera.aspect = clientWidth / clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(clientWidth, clientHeight);
+    };
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {

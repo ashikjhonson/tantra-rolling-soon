@@ -5,7 +5,7 @@
   font-family: "Pixelify Sans", sans-serif;
   font-optical-sizing: auto;
   color: white;
-  bottom: 0%;
+  bottom: 5%;
   font-weight: 700;
   font-size: 4rem;
   font-style: normal;
@@ -15,26 +15,27 @@
   font-optical-sizing: auto;
   color: white;
   font-weight: 700;
-  font-size: 5rem;
+  font-size: 2rem;
+  bottom: 0%;
   font-style: normal;
 }
 .logoimg {
   padding-top: 300px;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
 
 @media screen and (max-width: 500px) {
   .txt {
     font-size: 2rem;
-    bottom: 15%;
+    bottom: 20%;
     /* border: 1px solid white; */
     width: 100%;
   }
   .dt {
     font-size: 1.5rem;
     /* background-color: white; */
-    bottom: 10%;
+    bottom: 15%;
   }
   .logoimg {
     padding-top: 200px;
