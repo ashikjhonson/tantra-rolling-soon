@@ -77,7 +77,7 @@ const GLTFModelViewer = () => {
     };
 
     // Add multiple event listeners for better interaction handling
-    const events = ["click", "touchstart", "keydown", "resize", "load"];
+    const events = ["click", "touchstart", "keydown", "resize"];
     events.forEach((event) => {
       window.addEventListener(event, handleUserInteraction, { once: true });
     });
