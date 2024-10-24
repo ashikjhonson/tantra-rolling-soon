@@ -1,0 +1,100 @@
+.App {
+  text-align: center;
+}
+.txt {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  color: white;
+  bottom: 5%;
+  font-weight: 700;
+  font-size: 4rem;
+  font-style: normal;
+}
+.dt {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+  bottom: 0%;
+  font-style: normal;
+}
+.logoimg {
+  padding-top: 300px;
+  width: 150px;
+  height: 150px;
+}
+
+@media screen and (max-width: 500px) {
+  .txt {
+    font-size: 2rem;
+    bottom: 20%;
+    /* border: 1px solid white; */
+    width: 100%;
+  }
+  .dt {
+    font-size: 1.5rem;
+    /* background-color: white; */
+    bottom: 15%;
+  }
+  .logoimg {
+    padding-top: 200px;
+    width: 100px;
+    height: 100px;
+  }
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+  }
+  100% {
+    text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
