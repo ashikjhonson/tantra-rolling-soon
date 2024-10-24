@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/tantra-rolling-soon/static/css/main.661c7119.css",
-    "main.js": "/tantra-rolling-soon/static/js/main.fbcc71a2.js",
-    "static/js/453.767c2e45.chunk.js": "/tantra-rolling-soon/static/js/453.767c2e45.chunk.js",
+    "main.js": "/tantra-rolling-soon/static/js/main.d0148dd2.js",
+    "static/js/453.a12b65bb.chunk.js": "/tantra-rolling-soon/static/js/453.a12b65bb.chunk.js",
     "static/media/logo.png": "/tantra-rolling-soon/static/media/logo.50d07f680fdc79bd39d0.png",
     "index.html": "/tantra-rolling-soon/index.html",
     "main.661c7119.css.map": "/tantra-rolling-soon/static/css/main.661c7119.css.map",
-    "main.fbcc71a2.js.map": "/tantra-rolling-soon/static/js/main.fbcc71a2.js.map",
-    "453.767c2e45.chunk.js.map": "/tantra-rolling-soon/static/js/453.767c2e45.chunk.js.map"
+    "main.d0148dd2.js.map": "/tantra-rolling-soon/static/js/main.d0148dd2.js.map",
+    "453.a12b65bb.chunk.js.map": "/tantra-rolling-soon/static/js/453.a12b65bb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.661c7119.css",
-    "static/js/main.fbcc71a2.js"
+    "static/js/main.d0148dd2.js"
   ]
 }
